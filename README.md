@@ -2,6 +2,13 @@
 A simple real estate app, built with React, Redux, Ngnix, Docker and more.. 
 
 
+Configured:
+ -gitignore
+ -venv
+ -split settings(base, development, production)
+ -requirements.txt
+ -logging.conf (save logs into the file)
+
  Building APIs with Django REST framework.
 • Custom user models and model managers in Django.
 • Token based authentication.
