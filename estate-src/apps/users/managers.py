@@ -3,6 +3,8 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext_lazy as _
 
+"""Create user and super_user from basic """
+
 
 class CustomUserManager(BaseUserManager):
     def email_validator(self, email):
@@ -68,7 +70,6 @@ class CustomUserManager(BaseUserManager):
         else:
             raise ValueError(_("Admin Account: An email address is required"))
 
-        user = self.create_user(username, first_name, last_name, email, password, **
-                                )
+        user = self.create_user(username, first_name, last_name, email, password, **extra_fields)
         user.save(using=self._db)
         return user
