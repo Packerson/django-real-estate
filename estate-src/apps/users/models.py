@@ -22,6 +22,7 @@ from .managers import CustomUserManager
      if the user that is logged in, has the required permission(s).
 """
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     pkid = models.BigAutoField(primary_key=True, editable=False)
 
