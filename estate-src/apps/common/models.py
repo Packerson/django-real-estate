@@ -2,6 +2,8 @@ import uuid
 
 from django.db import models
 
+"""This model is a base for models in other apps"""
+
 
 class TimeStampedUUIDModel(models.Model):
     pkid = models.BigAutoField(primary_key=True, editable=False)
