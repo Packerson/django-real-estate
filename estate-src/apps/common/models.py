@@ -5,7 +5,7 @@ from django.db import models
 
 class TimeStampedUUIDModel(models.Model):
     pkid = models.BigAutoField(primary_key=True, editable=False)
-    id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True),
+    id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     """
     auto_now_add -automatically set the field when is created

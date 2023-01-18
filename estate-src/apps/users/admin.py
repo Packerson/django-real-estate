@@ -59,7 +59,7 @@ class UserAdmin(BaseUserAdmin):
             {
                 "fields": (
                     "last_login",
-                    "data_joined"
+                    "date_joined"
                 ),
             },
         ),
