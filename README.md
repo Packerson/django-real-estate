@@ -7,6 +7,8 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 -djoser
 
+-JWTAuthentication
+
 
 
 <b>Configured</b>:
