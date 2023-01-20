@@ -3,7 +3,7 @@
 
 A simple real estate app, built with React, Redux, Ngnix, Docker and more.. 
 
-Used in project:
+<b>Used in project:</b>
 
 -djoser
 
