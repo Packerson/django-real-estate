@@ -20,7 +20,7 @@ class RatingSerializers(serializers.ModelSerializer):
         exclude = ["updated_at", "pkid"]
 
     """
-    when created function connected with field need to be:
+     function connected with field has to have name:
     get_field
     """
     def get_rater(self, obj):
