@@ -1,14 +1,17 @@
 from .base import *
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_API_KEY = env("SENDGRID_API_KEY")
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+DEFAULT_FROM_EMAIL = 'info@sharpmind.club'
+
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_USE_TLS = True
 EMAIL_PORT = env("EMAIL_PORT")
-# EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
-EMAIL_HOST_PASSWORD = env("SENDGRID_API_KEY")
-DEFAULT_FROM_EMAIL = 'info@sharpmind.club'
+
+
 SITE_NAME = "Real Estate"
-SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
 
 DATABASES = {
     'default': {
