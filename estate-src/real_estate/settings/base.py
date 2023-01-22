@@ -39,7 +39,7 @@ THIRD_PARTY_APP = [
     'rest_framework',
     'django_filters',
     'django_countries',
-    'phonenumber_field'
+    'phonenumber_field',
     'djoser',
     'rest_framework_simplejwt'
 ]

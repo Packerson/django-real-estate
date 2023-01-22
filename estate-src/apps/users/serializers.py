@@ -9,7 +9,7 @@ from rest_framework import serializers
 User = get_user_model()
 
 
-class UserSerializers(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     """through user model connected with profile model by OneToOne"""
 
@@ -48,7 +48,7 @@ class UserSerializers(serializers.ModelSerializer):
 
         """ if user is superuser add to fields in Meta ['admin']"= True"""
 
-        representation = super(UserSerializers, self).to_representation(instance)
+        representation = super(UserSerializer, self).to_representation(instance)
 
         if instance.is_superuser:
             representation['admin'] = True
@@ -61,7 +61,7 @@ class CreateUserSerializer(UserCreateSerializer):
         model = User
         fields = ['id',
                   'username',
-                  ' email',
+                  'email',
                   'first_name',
                   'last_name',
                   'password']
