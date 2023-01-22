@@ -9,6 +9,8 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 -JWTAuthentication
 
+-SendGrid
+
 
 
 <b>Configured</b>:
