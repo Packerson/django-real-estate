@@ -9,13 +9,14 @@ urlpatterns = [
     path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/auth/', include('djoser.urls.jwt')),
 
+    # include url from profiles app
+    path("api/v1/profile/", include("apps.profiles.urls")),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-"""
-    header= show on logging screen
+"""header= show on logging screen
     title = 
-    index_title = 
-    """
+    index_title = """
 admin.site.site_header = "Real Estate Admin"
 admin.site.site_title = "Real Estate Admin Portal"
 admin.site.index_title = "Welcome to the Real Estate Portal"
