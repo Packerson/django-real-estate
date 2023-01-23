@@ -5,11 +5,15 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 <b>Used in project:</b>
 
+-POSTMAN 
+
 -djoser
 
 -JWTAuthentication
 
 -SendGrid
+
+- 
 
 
 
@@ -24,6 +28,8 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
  -requirements.txt
  
  -logging.conf (save logs into the file)
+ 
+ -"profile.exceptions"
  
 	
 	
