@@ -54,7 +54,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
         """if is top_agent add field to representation if not return base fields"""
         representation = super().to_representation(instance)
-        if instance.top:
+        if instance.top_agent:
             representation["top_agent"] = True
         return representation
 
@@ -79,6 +79,6 @@ class UpdatedProfileSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        if instance.top:
+        if instance.top_agent:
             representation["top_agent"] = True
         return representation

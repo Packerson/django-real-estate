@@ -46,7 +46,7 @@ class GetProfileApiView(APIView):
 
     def get(self, request):
         user = self.request.user
-        user_profile = Profile.objects.filter(user=user)
+        user_profile = Profile.objects.get(user=user)
         serializer = ProfileSerializer(user_profile, context={"request": request})
 
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -81,6 +81,7 @@ class UpdateProfileApiView(APIView):
                                               partial=True)
 
         serializer.is_valid()
+        
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
 
