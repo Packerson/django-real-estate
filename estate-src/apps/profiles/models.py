@@ -21,7 +21,7 @@ class Profile(TimeStampedUUIDModel):
                                 on_delete=models.CASCADE)
     phone_number = PhoneNumberField(verbose_name=_("Phone Number"),
                                     max_length=30, default="+48123456789")
-    about_me = models.TextField(verbose_name=_("ABout_me"),
+    about_me = models.TextField(verbose_name=_("About_me"),
                                 default="Say something about yourself")
     license = models.CharField(verbose_name=_("Real Estate license"),
                                max_length=20, blank=True, null=True)

@@ -12,6 +12,7 @@ from apps.common.models import TimeStampedUUIDModel
 User = get_user_model()
 
 
+# our custom model manager, so we will show only if published status is true
 class PropertyPublishedManager(models.Manager):
     def get_queryset(self):
         return (
@@ -37,7 +38,7 @@ class Property(TimeStampedUUIDModel):
 
     user = models.ForeignKey(
         User,
-        verbose_name=_("Agent, seller or buyer)"),
+        verbose_name=_("Agent, seller or buyer"),
         related_name="agent_buyer",
         on_delete=models.DO_NOTHING
     )
@@ -93,7 +94,7 @@ class Property(TimeStampedUUIDModel):
     tax = models.DecimalField(
         verbose_name=_("Property Tax"),
         max_digits=8,
-        decimal_places=0,
+        decimal_places=6,
         default=0.15,
         help_text="15% property tax charged"
     )
@@ -102,6 +103,10 @@ class Property(TimeStampedUUIDModel):
         max_digits=8,
         decimal_places=2,
         default=0.0
+    )
+    total_floors = models.IntegerField(
+        verbose_name=_("Number of floors"),
+        default=0
     )
     bedrooms = models.IntegerField(
         verbose_name=_("Bedrooms"),
@@ -164,7 +169,7 @@ class Property(TimeStampedUUIDModel):
         default=0
     )
 
-    objects = models.Manager
+    objects = models.Manager()
     published = PropertyPublishedManager()
 
     def __str__(self):
@@ -176,7 +181,7 @@ class Property(TimeStampedUUIDModel):
 
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
-        self.description = str.description(self.description)
+        self.description = str.capitalize(self.description)
 
         """This function create random uppercase string max len 10"""
         self.ref_code = "".join(
