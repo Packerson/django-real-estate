@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PropertyViews, Property
+from .models import Property, PropertyViews
 
 
 class PropertyAdmin(admin.ModelAdmin):
@@ -7,5 +7,7 @@ class PropertyAdmin(admin.ModelAdmin):
     list_filter = ['advert_type', 'property_type', 'country']
 
 
-admin.site.register(PropertyAdmin, Property)
-admin.site.regiser(PropertyViews)
+admin.site.register(PropertyViews)
+admin.site.register(Property, PropertyAdmin)
+
+

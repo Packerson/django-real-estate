@@ -11,6 +11,7 @@ urlpatterns = [
 
     # include url from profiles app
     path("api/v1/profile/", include("apps.profiles.urls")),
+    path("api/v1/properties/", include("apps.properties.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
