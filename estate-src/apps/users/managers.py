@@ -33,7 +33,7 @@ class CustomUserManager(BaseUserManager):
             self.email_validator(email)
         else:
             raise ValueError(_("Base User Account: "
-                               "An email address is required)"))
+                               "An email address is required"))
         user = self.model(
             username=username,
             first_name=first_name,
@@ -56,13 +56,13 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault("is_active", True)
 
         if extra_fields.get("is_staff") is not True:
-            raise ValueError(_("Superuser must have is_staff=True"))
+            raise ValueError(_("Superusers must have is_staff=True"))
 
         if extra_fields.get("is_superuser") is not True:
-            raise ValueError(_("Superuser must have is_superuser=True"))
+            raise ValueError(_("Superusers must have is_superuser=True"))
 
         if not password:
-            raise ValueError(_("Superuser must have password"))
+            raise ValueError(_("Superusers must have a password"))
 
         if email:
             email = self.normalize_email(email)
