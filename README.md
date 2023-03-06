@@ -13,7 +13,8 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 -SendGrid
 
-- 
+## TESTS: 
+ -  pytest -p no:warnings --cov=. --cov-report html
 
 
 
