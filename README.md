@@ -83,5 +83,10 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 -  sudo kill -kill $(sudo lsof -t -i :5432)
 -  docker config
 -  docker compose up --build -d --remove-orphans
+-  docker compose down
+-  docker ps – container list 
+-  docker exec -it {id} bash  - enter to container terminal
+-  docker-compose build {nazwa kontenera}  - rebuild container
+
 
 
