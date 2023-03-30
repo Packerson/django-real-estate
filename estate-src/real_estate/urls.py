@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('secret/', admin.site.urls),
     path('api/v1/auth/', include('djoser.urls')),
@@ -15,6 +14,8 @@ urlpatterns = [
     path("api/v1/ratings/", include("apps.ratings.urls")),
     path("api/v1/enquiries/", include("apps.enquiries.urls")),
 ]
+# I am going to use docker container instead locally server
+# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 """header= show on logging screen
