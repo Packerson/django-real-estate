@@ -9,8 +9,6 @@ faker = FakerFactory.create()
 
 @factory.django.mute_signals(post_save)
 class ProfileFactory(factory.django.DjangoModelFactory):
-
-    """create faker Profil"""
     user = factory.SubFactory("tests.factories.UserFactory")
     phone_number = factory.LazyAttribute(lambda x: faker.phone_number())
     about_me = factory.LazyAttribute(lambda x: faker.sentence(nb_words=5))
@@ -34,8 +32,6 @@ class ProfileFactory(factory.django.DjangoModelFactory):
 
 @factory.django.mute_signals(post_save)
 class UserFactory(factory.django.DjangoModelFactory):
-
-    """create faker User"""
     first_name = factory.LazyAttribute(lambda x: faker.first_name())
     last_name = factory.LazyAttribute(lambda x: faker.last_name())
     username = factory.LazyAttribute(lambda x: faker.first_name())
@@ -49,8 +45,6 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     @classmethod
     def _create(cls, model_class, *args, **kwargs):
-
-        """method for define user or superuser"""
         manager = cls._get_manager(model_class)
         if "is_superuser" in kwargs:
             return manager.create_superuser(*args, **kwargs)

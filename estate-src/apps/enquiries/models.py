@@ -5,16 +5,13 @@ from apps.common.models import TimeStampedUUIDModel
 
 
 class Enquiry(TimeStampedUUIDModel):
-    name = models.CharField(
-        _('Your name'),
-        max_length=100
-    )
+    name = models.CharField(_("Your name"), max_length=100)
     phone_number = PhoneNumberField(
-        _('Phone number'),
-        max_length=30,
-        default="+48444554455"
+        _("Phone number"), max_length=30, default="+48444554455"
     )
-    email = models.EmailField(_("Email"),)
+    email = models.EmailField(
+        _("Email"),
+    )
     subject = models.CharField(_("Subject"), max_length=100)
     message = models.TextField(_("Message"))
 
@@ -23,4 +20,3 @@ class Enquiry(TimeStampedUUIDModel):
 
     class Meta:
         verbose_name_plural = "Enquiries"
-

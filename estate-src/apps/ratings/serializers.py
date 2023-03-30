@@ -23,9 +23,9 @@ class RatingSerializers(serializers.ModelSerializer):
      function connected with field has to have name:
     get_field
     """
+
     def get_rater(self, obj):
         return obj.rater.username
 
     def get_agent(self, obj):
         return obj.agent.user.username
-

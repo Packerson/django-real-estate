@@ -24,7 +24,7 @@ def send_enquiry_email(request):
         message = data["message"]
         from_email = data["email"]
         # recipient_list = [DEFAULT_FROM_EMAIL]
-        recipient_list = ['szachista49@gmail.com']
+        recipient_list = ["szachista49@gmail.com"]
         send_mail(subject, message, from_email, recipient_list, fail_silently=True)
 
         enquiry = Enquiry(name=name, email=email, subject=subject, message=message)

@@ -25,6 +25,7 @@ from .serializers import ProfileSerializer, UpdatedProfileSerializer
 class AgentListApiView(generics.ListAPIView):
 
     """Generic list of Agents"""
+
     permission_classes = [permissions.IsAuthenticated]
     queryset = Profile.objects.filter(is_agent=True)
     serializer_class = ProfileSerializer
@@ -33,6 +34,7 @@ class AgentListApiView(generics.ListAPIView):
 class TopAgentListApiView(generics.ListAPIView):
 
     """Generic list of top_agents"""
+
     permission_classes = [permissions.IsAuthenticated]
     queryset = Profile.objects.filter(top_agent=True)
     serializer_class = ProfileSerializer
@@ -41,6 +43,7 @@ class TopAgentListApiView(generics.ListAPIView):
 class GetProfileApiView(APIView):
 
     """Generic profile View"""
+
     permission_classes = [permissions.IsAuthenticated]
     renderer_classes = [ProfileJSONRenderer]
 
@@ -55,6 +58,7 @@ class GetProfileApiView(APIView):
 class UpdateProfileApiView(APIView):
 
     """Generic update profile View with PATCH method"""
+
     permission_classes = [permissions.IsAuthenticated]
     renderer_classes = [ProfileJSONRenderer]
 
@@ -77,14 +81,11 @@ class UpdateProfileApiView(APIView):
             raise NotYourProfile
 
         data = request.data
-        serializer = UpdatedProfileSerializer(instance=request.user.profile, data=data,
-                                              partial=True)
+        serializer = UpdatedProfileSerializer(
+            instance=request.user.profile, data=data, partial=True
+        )
 
         serializer.is_valid()
-        
+
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-
-
