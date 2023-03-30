@@ -9,7 +9,7 @@ from .models import Rating
 User = get_user_model()
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 @permission_classes([permissions.IsAuthenticated])
 def create_agent_review(request, profile_id):
     agent_profile = Profile.objects.get(id=profile_id, is_agent=True)
@@ -20,13 +20,15 @@ def create_agent_review(request, profile_id):
         formatted_response = {"message": "You cant rate yourself"}
         return Response(formatted_response, status=status.HTTP_400_BAD_REQUEST)
 
-    alreadyExists = agent_profile.agent_reviews.filter(agent__pkid=profile_user.pkid).exists()
+    alreadyExists = agent_profile.agent_reviews.filter(
+        agent__pkid=profile_user.pkid
+    ).exists()
 
     if alreadyExists:
         formatted_response = {"detail": "Profile already reviewed"}
         return Response(formatted_response, status=status.HTTP_400_BAD_REQUEST)
 
-    elif data['rating'] == 0:
+    elif data["rating"] == 0:
         formatted_response = {"detail": "Please select a rating"}
         return Response(formatted_response, status=status.HTTP_400_BAD_REQUEST)
 
@@ -34,11 +36,13 @@ def create_agent_review(request, profile_id):
         review = Rating.objects.create(
             rater=request.user,
             agent=agent_profile,
-            rating=data['rating'],
-            comment=data['comment']
+            rating=data["rating"],
+            comment=data["comment"],
         )
 
-        reviews = agent_profile.agent_review.all()      #agent review because of related name
+        reviews = (
+            agent_profile.agent_review.all()
+        )  # agent review because of related name
         agent_profile.num_reviews = len(reviews)
 
         total = 0

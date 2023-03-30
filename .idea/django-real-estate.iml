@@ -8,7 +8,6 @@
     <orderEntry type="jdk" jdkName="Python 3.10 (django-real-estate)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="rent_class" />
-    <orderEntry type="module" module-name="Upload_Images_Api" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

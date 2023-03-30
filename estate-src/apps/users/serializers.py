@@ -1,5 +1,3 @@
-
-
 from django.contrib.auth import get_user_model
 from django_countries.serializer_fields import CountryField
 from djoser.serializers import UserCreateSerializer
@@ -18,25 +16,29 @@ class UserSerializer(serializers.ModelSerializer):
     profile_photo = serializers.ImageField(source="profile.profile_photo")
     country = CountryField(source="profile.country")
     city = serializers.CharField(source="profile.city")
-    top_seller = serializers.BooleanField(source="profile.top_seller") #should be top_agent
+    top_seller = serializers.BooleanField(
+        source="profile.top_seller"
+    )  # should be top_agent
     first_name = serializers.SerializerMethodField()
     last_name = serializers.SerializerMethodField()
-    full_name = serializers.SerializerMethodField(source='get_full_name')
+    full_name = serializers.SerializerMethodField(source="get_full_name")
 
     class Meta:
         model = User
-        fields = ['id',
-                  'username',
-                  ' email',
-                  'first_name',
-                  'last_name',
-                  'full_name',
-                  'gender',
-                  'phone_number',
-                  'profile_photo',
-                  'country',
-                  'city',
-                  'top_seller']
+        fields = [
+            "id",
+            "username",
+            " email",
+            "first_name",
+            "last_name",
+            "full_name",
+            "gender",
+            "phone_number",
+            "profile_photo",
+            "country",
+            "city",
+            "top_seller",
+        ]
 
     def ger_first_name(self, obj):
         return obj.first_name.title()
@@ -46,22 +48,18 @@ class UserSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
 
-        """ if user is superuser add to fields in Meta ['admin']"= True"""
+        """if user is superuser add to fields in Meta ['admin']"= True"""
 
         representation = super(UserSerializer, self).to_representation(instance)
 
         if instance.is_superuser:
-            representation['admin'] = True
+            representation["admin"] = True
         return representation
 
 
 class CreateUserSerializer(UserCreateSerializer):
     """UserCreateSerializer is from Djoser"""
+
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ['id',
-                  'username',
-                  ' email',
-                  'first_name',
-                  'last_name',
-                  'password']
+        fields = ["id", "username", " email", "first_name", "last_name", "password"]

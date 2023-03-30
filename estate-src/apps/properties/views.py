@@ -10,7 +10,11 @@ from rest_framework.views import APIView
 from .exceptions import PropertyNotFound
 from .models import Property, PropertyViews
 from .pagination import PropertyPagination
-from .serializers import (PropertySerializers, PropertyViewSerializer, PropertyCreateSerializer)
+from .serializers import (
+    PropertySerializers,
+    PropertyViewSerializer,
+    PropertyCreateSerializer,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -28,12 +32,10 @@ Filter allow for searching like that :
 
 class PropertyFilter(django_filters.FilterSet):
     advert_type = django_filters.CharFilter(
-        field_name='advert_type',
-        lookup_expr="iexact"
+        field_name="advert_type", lookup_expr="iexact"
     )
     property_type = django_filters.CharFilter(
-        field_name="property_type",
-        lookup_expr='iexact'
+        field_name="property_type", lookup_expr="iexact"
     )
 
     """using in url : ?price__lt=4000 """
@@ -43,7 +45,7 @@ class PropertyFilter(django_filters.FilterSet):
 
     class Meta:
         model = Property
-        fields = ['advert_type', 'property_type', 'price']
+        fields = ["advert_type", "property_type", "price"]
 
 
 class ListAllPropertiesAPIView(generics.ListAPIView):
@@ -70,11 +72,11 @@ class ListAgentsPropertyAPIView(generics.ListAPIView):
         filters.OrderingFilter,
     ]
     filterset_class = PropertyFilter
-    search_fields = ['country', 'city']
+    search_fields = ["country", "city"]
 
     def get_queryset(self):
         user = self.request.user
-        queryset = Property.objects.filter(user=user).order_by('-created_at')
+        queryset = Property.objects.filter(user=user).order_by("-created_at")
 
 
 class PropertyViewsAPIView(generics.ListAPIView):
@@ -92,7 +94,7 @@ class PropertyDetailView(APIView):
 
         x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
         if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
+            ip = x_forwarded_for.split(",")[0]
         else:
             ip = request.META.get("REMOTE_ADDR")
 
@@ -102,7 +104,7 @@ class PropertyDetailView(APIView):
             property.views += 1
             property.save()
 
-        serializer = PropertySerializers(property, context={'request': request})
+        serializer = PropertySerializers(property, context={"request": request})
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -122,7 +124,7 @@ def update_property_api_view(request, slug):
             status=status.HTTP_403_FORBIDDEN,
         )
 
-    if request.method == 'PUT':
+    if request.method == "PUT":
         data = request.data
         serializer = PropertySerializers(property, data, many=False)
         serializer.is_valid(raise_exception=True)
@@ -135,7 +137,7 @@ def update_property_api_view(request, slug):
 def create_property_api_view(request):
     user = request.user
     data = request.data
-    data['user'] = request.user.pkid
+    data["user"] = request.user.pkid
     serializer = PropertyCreateSerializer(data=data)
 
     if serializer.is_valid():
@@ -166,23 +168,23 @@ def delete_property_api_view(request, slug):
         delete_operation = property.delete()
         data = {}
         if delete_operation:
-            data['success'] = 'Deletion was succesful'
+            data["success"] = "Deletion was succesful"
         else:
-            data['failure'] = 'Delete failed'
+            data["failure"] = "Delete failed"
         return Response(data=data)
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 def uploadPropertyImage(request):
     data = request.data
 
-    property_id = data['property_id']
+    property_id = data["property_id"]
     property = Property.objects.get(id=property_id)
-    property.cover_photo = request.FILE.get('cover_photo')
-    property.photo1 = request.FILE.get('photo1')
-    property.photo2 = request.FILE.get('photo2')
-    property.photo3 = request.FILE.get('photo3')
-    property.photo4 = request.FILE.get('photo4')
+    property.cover_photo = request.FILE.get("cover_photo")
+    property.photo1 = request.FILE.get("photo1")
+    property.photo2 = request.FILE.get("photo2")
+    property.photo3 = request.FILE.get("photo3")
+    property.photo4 = request.FILE.get("photo4")
     property.save()
     return Response("Image(s) uploaded")
 
@@ -195,15 +197,15 @@ class PropertySearchAPIView(APIView):
         queryset = Property.objects.filter(published_status=True)
         data = self.request.data
 
-        advert_type = data['advert_type']
+        advert_type = data["advert_type"]
         queryset = queryset.filter(advert_type__iexact=advert_type)
 
-        property_type = data['property_type']
+        property_type = data["property_type"]
         queryset = queryset.filter(property_type__iexact=property_type)
 
-        price = data['price']
+        price = data["price"]
 
-        if price == '$0+':
+        if price == "$0+":
             price = 0
         elif price == "$50,000+":
             price = 50000
@@ -221,8 +223,8 @@ class PropertySearchAPIView(APIView):
         if price != -1:
             queryset = queryset.filter(price__gte=price)
 
-        bedrooms = data['bedrooms']
-        if bedrooms == '0+':
+        bedrooms = data["bedrooms"]
+        if bedrooms == "0+":
             bedrooms = 0
         elif bedrooms == "1+":
             bedrooms = 1
@@ -237,8 +239,8 @@ class PropertySearchAPIView(APIView):
 
         queryset = queryset.filter(bedrooms__gte=bedrooms)
 
-        bathrooms = data['bathrooms']
-        if bathrooms == '0+':
+        bathrooms = data["bathrooms"]
+        if bathrooms == "0+":
             bathrooms = 0
         elif bathrooms == "1+":
             bathrooms = 1
@@ -253,10 +255,9 @@ class PropertySearchAPIView(APIView):
 
         queryset = queryset.filter(bedrooms__gte=bathrooms)
 
-        catch_phrase = data['catch_phrase']
+        catch_phrase = data["catch_phrase"]
         queryset = queryset.filter(desciption__icontains=catch_phrase)
 
         serializer = PropertySerializers(queryset, many=True)
 
         return Response(serializer.data)
-
