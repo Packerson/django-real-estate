@@ -79,6 +79,17 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 • Using Ant Design with React
 
+### MAKEFILE - shorts for commands
+
+- make build
+- make volume - check if postgres is ready
+- make superuser 
+- make estate-db - login to database
+ 	- \list -list of databases
+ 	- \connect - connect to db
+ 	- \q - quit
+ 
+
 ### DOCKER
 -  sudo kill -kill $(sudo lsof -t -i :5432)
 -  docker config
