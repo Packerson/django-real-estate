@@ -79,3 +79,9 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 • Using Ant Design with React
 
+### DOCKER
+-  sudo kill -kill $(sudo lsof -t -i :5432)
+-  docker config
+-  docker compose up --build -d --remove-orphans
+
+
