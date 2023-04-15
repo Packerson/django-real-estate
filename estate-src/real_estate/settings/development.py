@@ -1,6 +1,9 @@
 from .base import *
 
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+
+"""set settings for sending email in celery"""
+EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
@@ -25,3 +28,10 @@ DATABASES = {
         "PORT": env("POSTGRES_PORT"),
     }
 }
+
+"""Can use CELERY AS an namespace because in celery.py CELERY 
+is set as a nampespace"""
+
+CELERY_BROKER_URL = env("CELERY_BROKER")
+CELERY_RESULT_BACKEND = env("CELERY_BACKEND")
+CELERY_TIMEZONE = "UTC"
