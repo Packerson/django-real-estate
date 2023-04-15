@@ -13,6 +13,11 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 -SendGrid
 
+
+## Flower
+ Is a real time web application for monitoring and administration True/false celery
+ 
+ 
 ## TESTS: 
  -  pytest -p no:warnings --cov=. --cov-report html
 
