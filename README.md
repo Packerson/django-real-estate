@@ -13,9 +13,16 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 -SendGrid
 
+-flower
+
+-celery
+
+-redis
+
+
 
 ## Flower
- Is a real time web application for monitoring and administration True/false celery
+ PORT: 5557, Is a real time web application for monitoring and administration tasks in celery
  
  
 ## TESTS: 
