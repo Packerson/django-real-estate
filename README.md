@@ -20,7 +20,8 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 -redis
 
 
-
+## CELERY
+- Sendign email with celery : https://pypi.org/project/django-celery-email/
 ## Flower
  PORT: 5557, Is a real time web application for monitoring and administration tasks in celery
  
