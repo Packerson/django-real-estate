@@ -2,8 +2,10 @@ from .base import *
 
 
 """set settings for sending email in celery"""
+
+
 EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+CELERY_EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")

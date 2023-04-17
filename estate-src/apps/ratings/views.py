@@ -41,7 +41,7 @@ def create_agent_review(request, profile_id):
         )
 
         reviews = (
-            agent_profile.agent_review.all()
+            agent_profile.agent_reviews.all()
         )  # agent review because of related name
         agent_profile.num_reviews = len(reviews)
 

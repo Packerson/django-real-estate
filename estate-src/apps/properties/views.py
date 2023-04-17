@@ -160,7 +160,7 @@ def delete_property_api_view(request, slug):
     user = request.user
     if property.user != user:
         return Response(
-            {"error": "You cant delete a property that doesn't belong to you"},
+            {"error": "You can't delete a property that doesn't belong to you"},
             status=status.HTTP_403_FORBIDDEN,
         )
 
@@ -168,9 +168,9 @@ def delete_property_api_view(request, slug):
         delete_operation = property.delete()
         data = {}
         if delete_operation:
-            data["success"] = "Deletion was succesful"
+            data["success"] = "Deletion was successful"
         else:
-            data["failure"] = "Delete failed"
+            data["failure"] = "Deletion failed"
         return Response(data=data)
 
 

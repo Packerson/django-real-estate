@@ -8,6 +8,13 @@ class PropertySerializers(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
     country = CountryField(name_only=True)
 
+    """SerializerMethodField return image url"""
+    cover_photo = serializers.SerializerMethodField()
+    photo1 = serializers.SerializerMethodField()
+    photo2 = serializers.SerializerMethodField()
+    photo3 = serializers.SerializerMethodField()
+    photo4 = serializers.SerializerMethodField()
+
     class Meta:
         model = Property
         fields = [
@@ -42,6 +49,21 @@ class PropertySerializers(serializers.ModelSerializer):
 
     def get_user(self, obj):
         return obj.user.username
+
+    def get_cover_photo(self, obj):
+        return obj.cover_photo.url
+
+    def get_photo1(self, obj):
+        return obj.photo1.url
+
+    def get_photo2(self, obj):
+        return obj.photo2.url
+
+    def get_photo3(self, obj):
+        return obj.photo3.url
+
+    def get_photo4(self, obj):
+        return obj.photo4.url
 
 
 class PropertyCreateSerializer(serializers.ModelSerializer):
