@@ -2,14 +2,6 @@ from pathlib import Path
 
 import environ
 
-"""
-superuser:
-Email Address: szachista49@gmail.com
-Username: Pablito
-First Name: Pablo
-Last Name: Escobarro
-
-"""
 env = environ.Env(DEBUG=(bool, False))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
