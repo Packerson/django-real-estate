@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Upload_Images_Api/.idea/Upload_Images_Api.iml" filepath="$PROJECT_DIR$/../Upload_Images_Api/.idea/Upload_Images_Api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/django-real-estate.iml" filepath="$PROJECT_DIR$/.idea/django-real-estate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../python_lessons/.idea/python_lessons.iml" filepath="$PROJECT_DIR$/../python_lessons/.idea/python_lessons.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Rent_lecture_hall/.idea/rent_class.iml" filepath="$PROJECT_DIR$/../Rent_lecture_hall/.idea/rent_class.iml" />
     </modules>
   </component>
