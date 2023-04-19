@@ -1,9 +1,19 @@
 
 # django-real-estate
 
-A simple real estate app, built with React, Redux, Ngnix, Docker and more.. 
+A real estate app, built with React, Redux, Ngnix, Docker and more.. 
 
 <b>Used in project:</b>
+
+-Django Rest Framework
+
+-React
+
+-Redux
+
+-Docker
+
+-Bootstrap
 
 -POSTMAN 
 
@@ -22,9 +32,9 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 ## CELERY
 - Sendign email with celery : https://pypi.org/project/django-celery-email/
+
 ## Flower
  PORT: 5557, Is a real time web application for monitoring and administration tasks in celery
- 
  
 ## TESTS: 
  -  pytest -p no:warnings --cov=. --cov-report html
@@ -54,9 +64,7 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 • Token based authentication.
 
-• UUID’s (advantages and disadvantages) and how pseudo primary keys solve this.
-
-• Intro to Python and Django API testing with Pytest using factories and fixtures.
+• UUID
 
 • Python Test coverage 
 
@@ -90,11 +98,11 @@ A simple real estate app, built with React, Redux, Ngnix, Docker and more..
 
 • Redux.
 
-• Using Ant Design with React
 
 ### MAKEFILE - shorts for commands
 
 - make build
+- make up - run container
 - make volume - check if postgres is ready
 - make superuser 
 - make estate-db - login to database
