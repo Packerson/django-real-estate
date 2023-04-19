@@ -18,6 +18,7 @@ const Header = () => {
 		dispatch(reset());
 		navigate("/");
 	};
+	console.log(user)
 	return (
 		<header>
 			<Navbar
