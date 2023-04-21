@@ -1,33 +1,49 @@
 
 # django-real-estate
 
-A real estate app, built with React, Redux, Ngnix, Docker and more.. 
 
-<b>Used in project:</b>
 
--Django Rest Framework
+<b>Building APIs with Django REST framework:</b>
 
--React
+• Custom user models and model managers in Django.
 
--Redux
+• Token based authentication.
 
--Docker
+• UUID
 
--Bootstrap
+• Python Test coverage 
 
--POSTMAN 
+• Django filtering
 
--djoser
+• Django signals
 
--JWTAuthentication
+• Django admin customization
 
--SendGrid
+• Django security
 
--flower
+• Logging in Django
 
--celery
+• Docker and containers with docker-compose
 
--redis
+• shell scripts in Docker
+
+• Asynchronous tasks with Celery and Redis
+
+• Asynchronous tasks monitoring with Flower
+
+• Working with Postgres within a Docker container 
+
+• Setting up Nginx as a web server /reverse proxy
+
+• Serving static and media files with Nginx
+
+• Utilizing Makefiles to make working with Docker easier
+
+• React Hooks
+
+• Redux
+
+• Postman
 
 
 ## CELERY
@@ -45,58 +61,16 @@ A real estate app, built with React, Redux, Ngnix, Docker and more..
 
  -gitignore
 	
--venv
+ -venv
  
  -split settings(base, development, production)
+ 
+ -each model in different app
  
  -requirements.txt
  
  -logging.conf (save logs into the file)
  
- -"profile.exceptions"
- 
-	
-	
-
- <b>Building APIs with Django REST framework:</b>
-
-• Custom user models and model managers in Django.
-
-• Token based authentication.
-
-• UUID
-
-• Python Test coverage 
-
-• Django filtering.
-
-• Django signals
-
-• Django admin customization
-
-• Django security.
-
-• Logging in Django.
-
-• Docker and containers with docker-compose.
-
-• shell scripts in Docker
-
-• Asynchronous tasks with Celery and Redis
-
-• Asynchronous tasks monitoring with Flower
-
-• Working with Postgres within a Docker container 
-
-• Setting up Nginx as a web server /reverse proxy.
-
-• Serving static and media files with Nginx
-
-• Utilizing Makefiles to make working with Docker easier.
-
-• React Hooks.
-
-• Redux.
 
 
 ### MAKEFILE - shorts for commands
